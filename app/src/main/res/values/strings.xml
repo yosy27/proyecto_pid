@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="etNombre">Ingrese nombres</string>
+    <string name="etApellido">Ingrese apellidos</string>
+    <string name="etDni">Ingrese DNI</string>
+    <string name="etTelefono">Ingrese teléfono</string>
+    <string name="etEmail">Ingrese correo</string>
+    <string name="etPassword">Ingrese contraseña</string>
+    <string name="registrate_text">Regístrate aquí</string>
+    <string name="registrarse_button">Registrarse</string>
+
+    <string-array name="rol">
+        <item>Administrador</item>
+        <item>Recepcionista</item>
+        <item>Conserje</item>
+        <item>Servicio de Limpieza</item>
+        <item>Cliente</item>
+    </string-array>
+
+    <string-array name="estado">
+        <item>ACTIVO</item>
+        <item>INACTIVO</item>
+    </string-array>
+
+    <string name="rol_hint">Selecciona un rol</string>
+    <string name="estado_hint">Selecciona el estado</string>
+
 </resources>

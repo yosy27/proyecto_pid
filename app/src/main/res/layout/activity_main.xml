@@ -25,7 +25,7 @@
             android:id="@+id/Registrate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:fontFamily="sans-serif"
             android:padding="5dp"
             android:text="Registrate aquí"
@@ -37,7 +37,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -55,13 +55,13 @@
                 android:layout_weight="1"
                 android:hint="Ingrese nombres"
                 android:inputType="text"
-                android:padding="5dp" />
+                android:padding="4dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -79,13 +79,37 @@
                 android:layout_weight="1"
                 android:hint="Ingrese apellidos"
                 android:inputType="text"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Icono"
+                android:padding="5dp"
+                android:src="@drawable/baseline_perm_identity_24" />
+
+            <EditText
+                android:id="@+id/etDni"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Ingrese DNI"
+                android:inputType="phone"
                 android:padding="5dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -94,7 +118,7 @@
                 android:src="@drawable/baseline_phone_24"
                 android:contentDescription="Icono de teléfono"
                 android:layout_gravity="center_vertical"
-                android:padding="5dp" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/etTelefono"
@@ -109,7 +133,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/txtRol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/rol" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/txtEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/estado" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -133,7 +187,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <EditText
@@ -148,23 +202,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/etPassword2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableRight="@drawable/baseline_remove_red_eye_24"
-                android:hint="Repetir contraseña"
-                android:inputType="textPassword"
-                android:padding="10dp" />
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/btnRegistrar"
