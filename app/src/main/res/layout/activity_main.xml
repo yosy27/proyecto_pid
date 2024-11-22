@@ -137,12 +137,12 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/txtRol"
+                android:id="@+id/idRol"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:entries="@array/txtRol"
                 android:padding="10dp"
-                android:spinnerMode="dropdown"
-                android:entries="@array/rol" />
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <LinearLayout
@@ -152,12 +152,12 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/txtEstado"
+                android:id="@+id/idEstado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:entries="@array/txtEstado"
                 android:padding="10dp"
-                android:spinnerMode="dropdown"
-                android:entries="@array/estado" />
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <LinearLayout

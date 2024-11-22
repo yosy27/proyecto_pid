@@ -9,7 +9,7 @@
     <string name="registrate_text">Regístrate aquí</string>
     <string name="registrarse_button">Registrarse</string>
 
-    <string-array name="rol">
+    <string-array name="txtRol">
         <item>Administrador</item>
         <item>Recepcionista</item>
         <item>Conserje</item>
@@ -17,7 +17,7 @@
         <item>Cliente</item>
     </string-array>
 
-    <string-array name="estado">
+    <string-array name="txtEstado">
         <item>ACTIVO</item>
         <item>INACTIVO</item>
     </string-array>
