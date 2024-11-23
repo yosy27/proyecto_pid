@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -14,9 +16,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.entity.Usuario;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText etNombre, etApellido, etTelefono, etEmail, etPassword;
+    EditText etNombre, etApellido, etTelefono, etEmail, etPassword, etDni;
+    Spinner spnRol, spnEstado;
     Button btnRegistrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         etNombre = findViewById(R.id.etNombre);
         etApellido = findViewById(R.id.etApellido);
         etTelefono = findViewById(R.id.etTelefono);
+        etDni = findViewById(R.id.etDni);
+        spnRol = findViewById(R.id.idRol);
+        spnEstado = findViewById(R.id.idEstado);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnRegistrar = findViewById(R.id.btnRegistrar);
@@ -43,22 +52,65 @@ public class MainActivity extends AppCompatActivity {
                 String nombre = etNombre.getText().toString();
                 String apellido = etApellido.getText().toString();
                 String telefono = etTelefono.getText().toString();
+                String dni = etDni.getText().toString();
+                String txtRol = spnRol.getSelectedItem().toString();
+                int idRol = spnRol.getSelectedItemPosition();
+                String txtEstado = spnEstado.getSelectedItem().toString();
+                int idEstado = spnEstado.getSelectedItemPosition();
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
+
+                // Validación del DNI
+                if (!validarDni(dni)) {
+                    Toast.makeText(MainActivity.this, "El DNI debe tener 8 caracteres y no debe repetirse.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validación del Email
+                if (!validarEmail(email)) {
+                    Toast.makeText(MainActivity.this, "El email ya está registrado.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validación de Nombres
+                if (!validarNombre(nombre)) {
+                    Toast.makeText(MainActivity.this, "El nombre debe tener entre 6 y 30 caracteres.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validación de Contraseña
+                if (!validarPassword(password)) {
+                    Toast.makeText(MainActivity.this, "La contraseña debe contener letras, números y símbolos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validación de Rol y Estado
+                if (txtRol.equals("Selecciona un rol") || txtEstado.equals("Selecciona un estado")) {
+                    Toast.makeText(MainActivity.this, "Debes seleccionar un rol y un estado.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Usuario obj = new Usuario();
                 obj.setNombre(nombre);
                 obj.setApellido(apellido);
                 obj.setTelefono(telefono);
+                obj.setDni(dni);
+                obj.setRol(txtRol);
+                obj.setEstado(txtEstado);
                 obj.setEmail(email);
                 obj.setPassword(password);
 
                 String msg = "Bienvenido \n";
-                msg += "Nombres " + obj.getNombre() + "\n";
-                msg += "Apellidos " + obj.getApellido() + "\n";
-                msg += "Telefóno " + obj.getTelefono() + "\n";
-                msg += "Email " + obj.getEmail() + "\n";
-                msg += "Clave " + obj.getPassword();
+                msg += "Nombres: " + obj.getNombre() + "\n";
+                msg += "Apellidos: " + obj.getApellido() + "\n";
+                msg += "Telefóno: " + obj.getTelefono() + "\n";
+                msg += "DNI: " + obj.getTelefono() + "\n";
+                msg += "Rol: " + obj.getRol() + "\n";
+                msg += "Estado: " + obj.getEstado() + "\n";
+                msg += "Email: " + obj.getEmail() + "\n";
+                msg += "Contraseña: " + obj.getPassword();
+
+                mensaje(msg);
             }
         });
     }
@@ -70,4 +122,32 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
+    private boolean validarDni(String dni) {
+        if (dni.length() != 8) {
+            return false;
+        }
+        // Aquí puedes agregar una validación para verificar que el DNI no se repita
+        return true;
+    }
+
+    // Validación del Email
+    private boolean validarEmail(String email) {
+        // Validación de email simulada (esto debería consultar una base de datos)
+        if (email.equals("example@example.com")) {
+            return false; // Email ya registrado
+        }
+        return true;
+    }
+
+    // Validación de Nombre (debe tener entre 6 y 30 caracteres)
+    private boolean validarNombre(String nombre) {
+        return nombre.length() >= 6 && nombre.length() <= 30;
+    }
+
+    // Validación de Contraseña (debe contener letras, números y símbolos)
+    private boolean validarPassword(String password) {
+        Pattern pattern = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*()_+={}:;,.?]).+$");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
 }
